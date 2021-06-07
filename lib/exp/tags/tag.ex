@@ -4,7 +4,8 @@ defmodule Exp.Tags.Tag do
 
   schema "tags" do
     field :name, :string
-    field :user_id, :id
+
+    belongs_to :user, Exp.Accounts.User
 
     timestamps()
   end
