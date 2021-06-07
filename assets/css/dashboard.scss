@@ -1,0 +1,22 @@
+.dashboard-page {
+  > .balance {
+    text-align: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin-bottom: 1rem;
+    border: 1px solid rgba($color: #b8b8b8, $alpha: 0.5);
+  }
+
+  > .totals {
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 2rem;
+    width: 100%;
+
+    > .totals-item {
+      text-align: center;
+      padding: 2rem;
+      border: 1px solid rgba($color: #b8b8b8, $alpha: 0.5);
+    }
+  }
+}

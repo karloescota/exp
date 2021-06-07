@@ -6,15 +6,15 @@ defmodule Exp.TagsTest do
   describe "tags" do
     alias Exp.Tags.Tag
 
-    @valid_attrs %{name: "some name"}
-    @update_attrs %{name: "some updated name"}
-    @invalid_attrs %{name: nil}
+    @valid_attrs %{name: "some name", type: "income"}
+    @update_attrs %{name: "some updated name", type: "expenses"}
+    @invalid_attrs %{name: nil, type: nil}
 
     def tag_fixture(attrs \\ %{}) do
-      {:ok, tag} =
-        attrs
-        |> Enum.into(@valid_attrs)
-        |> Tags.create_tag()
+      user = Exp.AccountsFixtures.user_fixture()
+      attrs = Enum.into(attrs, @valid_attrs)
+
+      {:ok, tag} = Tags.create_tag(user, attrs)
 
       tag
     end
@@ -30,18 +30,22 @@ defmodule Exp.TagsTest do
     end
 
     test "create_tag/1 with valid data creates a tag" do
-      assert {:ok, %Tag{} = tag} = Tags.create_tag(@valid_attrs)
+      user = Exp.AccountsFixtures.user_fixture()
+      assert {:ok, %Tag{} = tag} = Tags.create_tag(user, @valid_attrs)
       assert tag.name == "some name"
+      assert tag.type == "income"
     end
 
     test "create_tag/1 with invalid data returns error changeset" do
-      assert {:error, %Ecto.Changeset{}} = Tags.create_tag(@invalid_attrs)
+      user = Exp.AccountsFixtures.user_fixture()
+      assert {:error, %Ecto.Changeset{}} = Tags.create_tag(user, @invalid_attrs)
     end
 
     test "update_tag/2 with valid data updates the tag" do
       tag = tag_fixture()
       assert {:ok, %Tag{} = tag} = Tags.update_tag(tag, @update_attrs)
       assert tag.name == "some updated name"
+      assert tag.type == "expenses"
     end
 
     test "update_tag/2 with invalid data returns error changeset" do

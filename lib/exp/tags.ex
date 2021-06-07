@@ -10,8 +10,8 @@ defmodule Exp.Tags do
 
   def get_tag!(id), do: Repo.get!(Tag, id)
 
-  def create_tag(attrs \\ %{}) do
-    %Tag{}
+  def create_tag(user, attrs \\ %{}) do
+    %Tag{user_id: user.id}
     |> Tag.changeset(attrs)
     |> Repo.insert()
   end

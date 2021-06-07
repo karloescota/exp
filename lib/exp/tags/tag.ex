@@ -4,16 +4,21 @@ defmodule Exp.Tags.Tag do
 
   schema "tags" do
     field :name, :string
+    field :type, :string
 
     belongs_to :user, Exp.Accounts.User
 
     timestamps()
   end
 
+  @valid_types ["income", "expenses"]
+
   @doc false
   def changeset(tag, attrs) do
     tag
-    |> cast(attrs, [:name])
-    |> validate_required([:name])
+    |> cast(attrs, [:name, :type, :user_id])
+    |> validate_required([:name, :type, :user_id])
+    |> validate_inclusion(:type, @valid_types)
+    |> unique_constraint([:name, :user_id])
   end
 end

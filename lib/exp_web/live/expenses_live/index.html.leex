@@ -1,0 +1,16 @@
+<div class="expenses-page">
+  <div class="month"><%= Calendar.strftime(@date, "%b %Y") %></div>
+  <h3 class="total"><%= currency_format(@total) %></h3>
+
+  <ul class="expenses">
+    <%= for expense <- @expenses do %>
+      <div class="expense">
+        <div class="details">
+          <div class="name"><%= expense.name %></div>
+          <div class="tag"><%= expense.tag.name %></div>
+        </div>
+        <div class="amount"><%= currency_format(expense.amount) %></div>
+      </div>
+    <% end %>
+  </ul>
+</div>

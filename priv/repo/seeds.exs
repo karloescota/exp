@@ -9,3 +9,37 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+alias Exp.{Accounts, Tags, Expenses}
+
+{:ok, user} = Accounts.register_user(%{email: "admin@test.com", password: "password1234"})
+
+{:ok, food_tag} =
+  Tags.create_tag(user, %{
+    name: "Food",
+    type: "expenses"
+  })
+
+{:ok, transportation_tag} =
+  Tags.create_tag(user, %{
+    name: "Transportation",
+    type: "expenses"
+  })
+
+Expenses.create_expense(user, food_tag, %{
+  name: "Dinner",
+  amount: 30000,
+  date: Date.utc_today()
+})
+
+Expenses.create_expense(user, food_tag, %{
+  name: "Lunch",
+  amount: 22000,
+  date: Date.utc_today()
+})
+
+Expenses.create_expense(user, transportation_tag, %{
+  name: "Bus fare",
+  amount: 12000,
+  date: Date.utc_today()
+})

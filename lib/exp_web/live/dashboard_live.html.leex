@@ -1,0 +1,19 @@
+<div class="dashboard-page">
+  <div class="nav">
+    Add category
+  </div>
+
+  <div>Dashboard</div>
+  <div class="balance">P 32,000</div>
+  <div class="totals">
+    <div class="totals-item">
+      <span class="amount">P 58,000</span>
+    </div>
+    <%= live_redirect "P 26,000", to: Routes.expenses_index_path(@socket, :index, @year, @month), class: "totals-item" %>
+  </div>
+
+  <h3>Transactions</h3>
+  <ul>
+    <li></li>
+  </ul>
+</div>

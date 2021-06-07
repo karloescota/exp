@@ -1,5 +1,11 @@
 /* This file is for your main application css. */
 @import "./phoenix.css";
+@import "./dashboard";
+@import "./expenses";
+
+a {
+  color: black;
+}
 
 /* LiveView specific classes for your customizations */
 .phx-no-feedback.invalid-feedback,

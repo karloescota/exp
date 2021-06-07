@@ -8,6 +8,7 @@ defmodule Exp.Expenses.Expense do
     field :date, :date
 
     belongs_to :tag, Exp.Tags.Tag
+    belongs_to :user, Exp.Accounts.User
 
     timestamps()
   end
@@ -15,7 +16,7 @@ defmodule Exp.Expenses.Expense do
   @doc false
   def changeset(expense, attrs) do
     expense
-    |> cast(attrs, [:name, :amount, :date])
-    |> validate_required([:name, :amount, :date])
+    |> cast(attrs, [:name, :amount, :date, :user_id, :tag_id])
+    |> validate_required([:name, :amount, :date, :user_id, :tag_id])
   end
 end
