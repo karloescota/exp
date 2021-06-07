@@ -40,7 +40,7 @@ defmodule ExpWeb.Router do
 
     scope "/" do
       pipe_through :browser
-      live_dashboard "/dashboard", metrics: ExpWeb.Telemetry
+      live_dashboard "/admin/dashboard", metrics: ExpWeb.Telemetry
     end
   end
 
