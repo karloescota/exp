@@ -19,6 +19,14 @@ defmodule Exp.TagsTest do
       tag
     end
 
+    test "list user tags" do
+      user = Exp.AccountsFixtures.user_fixture()
+      {:ok, expense_tag} = Tags.create_tag(user, %{name: "Food", type: "expense"})
+      {:ok, income_tag} = Tags.create_tag(user, %{name: "Salary", type: "income"})
+
+      assert Tags.list_tags(user) == [expense_tag, income_tag]
+    end
+
     test "list_tags/0 returns all tags" do
       tag = tag_fixture()
       assert Tags.list_tags() == [tag]

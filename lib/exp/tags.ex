@@ -4,6 +4,11 @@ defmodule Exp.Tags do
 
   alias Exp.Tags.Tag
 
+  def list_tags(user) do
+    query = from tag in Tag, where: tag.user_id == ^user.id
+    Repo.all(query)
+  end
+
   def list_tags do
     Repo.all(Tag)
   end
