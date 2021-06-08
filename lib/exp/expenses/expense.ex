@@ -4,7 +4,7 @@ defmodule Exp.Expenses.Expense do
 
   schema "expenses" do
     field :name, :string
-    field :amount, :integer
+    field :amount, Money.Ecto.Amount.Type
     field :date, :date
 
     belongs_to :tag, Exp.Tags.Tag
@@ -18,5 +18,13 @@ defmodule Exp.Expenses.Expense do
     expense
     |> cast(attrs, [:name, :amount, :date, :user_id, :tag_id])
     |> validate_required([:name, :amount, :date, :user_id, :tag_id])
+    |> validate_money(:amount)
+  end
+
+  defp validate_money(changeset, field) do
+    validate_change(changeset, field, fn
+      _, %Money{amount: amount} when amount > 0 -> []
+      _, _ -> [amount: "must be greater than 0"]
+    end)
   end
 end

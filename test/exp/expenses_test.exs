@@ -17,7 +17,7 @@ defmodule Exp.ExpensesTest do
 
       attrs = Enum.into(attrs, @valid_attrs)
 
-      {:ok, expense} = Expenses.create_expense(user, tag, attrs)
+      {:ok, expense} = Expenses.create_expense(user, Map.put(attrs, :tag_id, tag.id))
 
       expense
     end
@@ -35,22 +35,24 @@ defmodule Exp.ExpensesTest do
     test "create_expense/1 with valid data creates a expense" do
       user = Exp.AccountsFixtures.user_fixture()
       {:ok, tag} = Exp.Tags.create_tag(user, %{name: "Dinner", type: "expenses"})
-      assert {:ok, %Expense{} = expense} = Expenses.create_expense(user, tag, @valid_attrs)
-      assert expense.amount == 42
+
+      assert {:ok, %Expense{} = expense} =
+               Expenses.create_expense(user, Map.put(@valid_attrs, :tag_id, tag.id))
+
+      assert expense.amount == Money.new(42)
       assert expense.date == ~D[2010-04-17]
       assert expense.name == "some name"
     end
 
     test "create_expense/1 with invalid data returns error changeset" do
       user = Exp.AccountsFixtures.user_fixture()
-      {:ok, tag} = Exp.Tags.create_tag(user, %{name: "Dinner", type: "expenses"})
-      assert {:error, %Ecto.Changeset{}} = Expenses.create_expense(user, tag, @invalid_attrs)
+      assert {:error, %Ecto.Changeset{}} = Expenses.create_expense(user, @invalid_attrs)
     end
 
     test "update_expense/2 with valid data updates the expense" do
       expense = expense_fixture()
       assert {:ok, %Expense{} = expense} = Expenses.update_expense(expense, @update_attrs)
-      assert expense.amount == 43
+      assert expense.amount == Money.new(43)
       assert expense.date == ~D[2011-05-18]
       assert expense.name == "some updated name"
     end

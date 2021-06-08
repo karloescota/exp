@@ -21,8 +21,8 @@ defmodule Exp.Expenses do
 
   def get_expense!(id), do: Repo.get!(Expense, id)
 
-  def create_expense(user, tag, attrs \\ %{}) do
-    %Expense{user_id: user.id, tag_id: tag.id}
+  def create_expense(user, attrs \\ %{}) do
+    %Expense{user_id: user.id}
     |> Expense.changeset(attrs)
     |> Repo.insert()
   end
