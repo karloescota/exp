@@ -9,14 +9,20 @@
     <link phx-track-static rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <script defer phx-track-static type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </head>
-  <body>
-    <header>
+  <body class="body">
+    <header class="header">
       <section class="container">
         <nav role="navigation">
           <%= render "_user_menu.html", assigns %>
         </nav>
       </section>
     </header>
-    <%= @inner_content %>
+    <div class="main">
+      <%= @inner_content %>
+    </div>
+    <div class="footer-nav">
+      <div class="dashboard">Dashboard</div>
+      <div class="tags">Tags</div>
+    </div>
   </body>
 </html>

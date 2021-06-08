@@ -7,6 +7,41 @@ a {
   color: black;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  background-color: #f0f0f0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  background-color: white;
+}
+
+.main {
+  flex: 1;
+}
+
+.footer-nav {
+  display: flex;
+  background-color: #8f7fff;
+  color: rgb(255, 255, 255);
+
+  > div {
+    padding: 2rem;
+    flex: 1;
+    text-align: center;
+  }
+
+  > div:last-child {
+    border-left: 1px solid rgb(190, 187, 194);
+  }
+}
+
 /* LiveView specific classes for your customizations */
 .phx-no-feedback.invalid-feedback,
 .phx-no-feedback .invalid-feedback {
