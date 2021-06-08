@@ -1,4 +1,16 @@
 <div class="tags-page">
+  <span><%= live_patch "New Tag", to: Routes.tag_path(@socket, :new), class: "button" %></span>
+
+  <%= if @live_action in [:new] do %>
+    <%= live_modal ExpWeb.TagLive.FormComponent,
+      id: :new,
+      title: @page_title,
+      action: @live_action,
+      tag: @tag,
+      current_user: @current_user,
+      return_to: Routes.tag_path(@socket, :index) %>
+  <% end %>
+
   <div class="tags">
     <%= for tag <- @tags do %>
       <div class="tag">

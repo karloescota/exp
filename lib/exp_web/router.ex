@@ -71,6 +71,7 @@ defmodule ExpWeb.Router do
     live "/expenses/new", ExpenseLive, :new
 
     live "/tags", TagLive, :index
+    live "/tags/new", TagLive, :new
   end
 
   scope "/", ExpWeb do

@@ -7,8 +7,6 @@ defmodule ExpWeb.TagLive do
   @impl true
   def mount(_params, session, socket) do
     socket = assign_defaults(socket, session)
-    current_user = socket.assigns.current_user
-
     tags = Tags.list_tags()
 
     {:ok,
@@ -24,13 +22,12 @@ defmodule ExpWeb.TagLive do
   defp apply_action(socket, :index, _params) do
     socket
     |> assign(:page_title, nil)
-
-    # |> assign(:expense, nil)
+    |> assign(:tag, nil)
   end
 
-  # defp apply_action(socket, :new, _params) do
-  #   socket
-  #   |> assign(:page_title, "New Expense")
-  #   |> assign(:expense, %Expense{})
-  # end
+  defp apply_action(socket, :new, _params) do
+    socket
+    |> assign(:page_title, "New Tag")
+    |> assign(:tag, %Tag{})
+  end
 end
