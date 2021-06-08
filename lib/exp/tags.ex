@@ -9,7 +9,7 @@ defmodule Exp.Tags do
   end
 
   def list_expenses_tags(user) do
-    query = from tag in Tag, where: tag.type == "expenses" and tag.user_id == ^user.id
+    query = from tag in Tag, where: tag.type == "expense" and tag.user_id == ^user.id
     Repo.all(query)
   end
 
