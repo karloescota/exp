@@ -1,3 +1,10 @@
 <div class="tags-page">
-  Tags
+  <div class="tags">
+    <%= for tag <- @tags do %>
+      <div class="tag">
+        <div class="name"><%= tag.name %></div>
+        <div class="<%= tag.type %>"><%= tag.type %></div>
+      </div>
+    <% end %>
+  </div>
 </div>

@@ -1,0 +1,22 @@
+.tags-page {
+  > .tags {
+    border-bottom: 1px solid rgb(221, 221, 221);
+
+    > .tag {
+      padding: 1.5rem;
+      border-top: 1px solid rgb(221, 221, 221);
+
+      > .expense {
+        font-size: 0.6em;
+        color: #ec5f5f;
+        text-transform: uppercase;
+      }
+
+      > .income {
+        font-size: 0.6em;
+        color: #23ea2f;
+        text-transform: uppercase;
+      }
+    }
+  }
+}

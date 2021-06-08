@@ -26,6 +26,12 @@ alias Exp.{Accounts, Tags, Expenses}
     type: "expense"
   })
 
+{:ok, salary_tag} =
+  Tags.create_tag(user, %{
+    name: "Salary",
+    type: "income"
+  })
+
 Expenses.create_expense(user, %{
   tag_id: food_tag.id,
   name: "Dinner",
