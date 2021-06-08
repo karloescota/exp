@@ -2,6 +2,7 @@ defmodule ExpWeb.DashboardLive do
   use ExpWeb, :live_view
 
   alias Exp.Transactions
+
   @impl true
   def mount(_params, %{"user_token" => _user_token} = session, socket) do
     socket = assign_defaults(socket, session)
