@@ -18,6 +18,11 @@ defmodule Exp.Tags do
     Repo.all(query)
   end
 
+  def list_income_tags(user) do
+    query = from tag in Tag, where: tag.type == "income" and tag.user_id == ^user.id
+    Repo.all(query)
+  end
+
   def get_tag!(id), do: Repo.get!(Tag, id)
 
   def create_tag(user, attrs \\ %{}) do

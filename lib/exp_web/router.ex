@@ -71,6 +71,9 @@ defmodule ExpWeb.Router do
     live "/expenses/:year/:month", ExpenseLive, :index
     live "/expenses/new", ExpenseLive, :new
 
+    live "/incomes/:year/:month", IncomeLive, :index
+    live "/incomes/new", IncomeLive, :new
+
     live "/tags", TagLive, :index
     live "/tags/new", TagLive, :new
   end

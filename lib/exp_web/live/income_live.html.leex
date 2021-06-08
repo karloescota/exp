@@ -1,0 +1,27 @@
+<div class="incomes-page">
+  <div class="month"><%= Calendar.strftime(@date, "%b %Y") %></div>
+  <h3 class="total"><%= @total %></h3>
+  <span><%= live_patch "New Income", to: Routes.income_path(@socket, :new), class: "button" %></span>
+
+  <%= if @live_action in [:new] do %>
+    <%= live_modal ExpWeb.IncomeLive.FormComponent,
+      id: :new,
+      title: @page_title,
+      action: @live_action,
+      income: @income,
+      current_user: @current_user,
+      return_to: Routes.income_path(@socket, :index, @year, @month) %>
+  <% end %>
+
+  <ul class="incomes">
+    <%= for income <- @incomes do %>
+      <div class="income">
+        <div class="details">
+          <div class="name"><%= income.name %></div>
+          <div class="tag"><%= income.tag.name %></div>
+        </div>
+        <div class="amount"><%= income.amount %></div>
+      </div>
+    <% end %>
+  </ul>
+</div>
