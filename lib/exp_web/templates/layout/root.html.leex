@@ -21,8 +21,8 @@
       <%= @inner_content %>
     </div>
     <div class="footer-nav">
-      <div class="dashboard">Dashboard</div>
-      <div class="tags">Tags</div>
+      <%= link "Dashboard", to: Routes.dashboard_path(@conn, :index), class: "nav-item" %>
+      <%= link "Tags", to: Routes.tag_path(@conn, :index), class: "nav-item" %>
     </div>
   </body>
 </html>

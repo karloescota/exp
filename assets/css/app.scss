@@ -29,15 +29,15 @@ body {
 .footer-nav {
   display: flex;
   background-color: #8f7fff;
-  color: rgb(255, 255, 255);
 
-  > div {
-    padding: 2rem;
+  > .nav-item {
     flex: 1;
+    padding: 2rem;
     text-align: center;
+    color: rgb(255, 255, 255);
   }
 
-  > div:last-child {
+  > .nav-item:last-child {
     border-left: 1px solid rgb(190, 187, 194);
   }
 }
