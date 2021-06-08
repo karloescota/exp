@@ -1,17 +1,20 @@
 <div class="dashboard-page">
-  <div class="nav">
-    Add category
-  </div>
-
-  <div>Dashboard</div>
   <div class="balance">P 32,000</div>
   <div class="totals">
-    <%= live_redirect "P 58,000", to: Routes.income_path(@socket, :index, @year, @month), class: "totals-item" %>
-    <%= live_redirect "P 26,000", to: Routes.expense_path(@socket, :index, @year, @month), class: "totals-item" %>
+    <%= live_redirect @income_total, to: Routes.income_path(@socket, :index, @year, @month), class: "totals-item" %>
+    <%= live_redirect @expense_total, to: Routes.expense_path(@socket, :index, @year, @month), class: "totals-item" %>
   </div>
 
-  <h3>Transactions</h3>
-  <ul>
-    <li></li>
-  </ul>
+  <div class="recent-transactions">
+    <span class="title">Recent transactions</span>
+    <%= for transaction <- @transactions do %>
+      <div class="transaction">
+        <div class="details">
+          <div class="name"><%= transaction.name %></div>
+          <div class="tag <%= transaction.tag.type %>"><%= transaction.tag.name %></div>
+        </div>
+        <div class="amount"><%= transaction.amount %></div>
+      </div>
+    <% end %>
+  </div>
 </div>
