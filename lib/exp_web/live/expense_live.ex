@@ -14,7 +14,6 @@ defmodule ExpWeb.ExpenseLive do
     {:ok, date} = Date.new(year, month, 1)
 
     expenses = Expenses.list_expenses_for(current_user, date, [:tag])
-
     total = Enum.reduce(expenses, Money.new(0), fn exp, acc -> Money.add(acc, exp.amount) end)
 
     {:ok,

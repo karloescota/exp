@@ -18,8 +18,6 @@ defmodule ExpWeb.ExpenseLive.FormComponent do
 
   @impl true
   def handle_event("validate", %{"expense" => expense_params}, socket) do
-    IO.inspect(expense_params)
-
     changeset =
       socket.assigns.expense
       |> Expenses.change_expense(expense_params)
@@ -33,27 +31,20 @@ defmodule ExpWeb.ExpenseLive.FormComponent do
   end
 
   defp save_expense(socket, :edit, expense_params) do
-    {:noreply, :ok}
-    # case expenses.update_expense(socket.assigns.expense, expense_params) do
-    #   {:ok, _expense} ->
-    #     {:noreply,
-    #      socket
-    #      |> put_flash(:info, "expense updated successfully")
-    #      |> push_redirect(to: socket.assigns.return_to)}
+    case Expenses.update_expense(socket.assigns.expense, expense_params) do
+      {:ok, _expense} ->
+        {:noreply,
+         socket
+         |> put_flash(:info, "Expense updated successfully")
+         |> push_redirect(to: socket.assigns.return_to)}
 
-    #   {:error, %Ecto.Changeset{} = changeset} ->
-    #     {:noreply, assign(socket, :changeset, changeset)}
-    # end
+      {:error, %Ecto.Changeset{} = changeset} ->
+        {:noreply, assign(socket, :changeset, changeset)}
+    end
   end
 
   defp save_expense(socket, :new, expense_params) do
-    IO.inspect("saved---------------")
-    IO.inspect(socket.assigns)
-    current_user = socket.assigns.current_user
-    a = Expenses.create_expense(current_user, expense_params)
-    IO.inspect(a)
-
-    case a do
+    case Expenses.create_expense(socket.assigns.current_user, expense_params) do
       {:ok, _expense} ->
         {:noreply,
          socket
