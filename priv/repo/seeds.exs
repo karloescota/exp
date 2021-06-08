@@ -26,19 +26,22 @@ alias Exp.{Accounts, Tags, Expenses}
     type: "expense"
   })
 
-Expenses.create_expense(user, food_tag, %{
+Expenses.create_expense(user, %{
+  tag_id: food_tag.id,
   name: "Dinner",
   amount: 30000,
   date: Date.utc_today()
 })
 
-Expenses.create_expense(user, food_tag, %{
+Expenses.create_expense(user, %{
+  tag_id: food_tag.id,
   name: "Lunch",
   amount: 22000,
   date: Date.utc_today()
 })
 
-Expenses.create_expense(user, transportation_tag, %{
+Expenses.create_expense(user, %{
+  tag_id: transportation_tag.id,
   name: "Bus fare",
   amount: 12000,
   date: Date.utc_today()
