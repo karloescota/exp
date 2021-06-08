@@ -17,13 +17,13 @@ alias Exp.{Accounts, Tags, Expenses}
 {:ok, food_tag} =
   Tags.create_tag(user, %{
     name: "Food",
-    type: "expenses"
+    type: "expense"
   })
 
 {:ok, transportation_tag} =
   Tags.create_tag(user, %{
     name: "Transportation",
-    type: "expenses"
+    type: "expense"
   })
 
 Expenses.create_expense(user, food_tag, %{

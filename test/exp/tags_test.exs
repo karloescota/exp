@@ -7,7 +7,7 @@ defmodule Exp.TagsTest do
     alias Exp.Tags.Tag
 
     @valid_attrs %{name: "some name", type: "income"}
-    @update_attrs %{name: "some updated name", type: "expenses"}
+    @update_attrs %{name: "some updated name", type: "expense"}
     @invalid_attrs %{name: nil, type: nil}
 
     def tag_fixture(attrs \\ %{}) do
@@ -45,7 +45,7 @@ defmodule Exp.TagsTest do
       tag = tag_fixture()
       assert {:ok, %Tag{} = tag} = Tags.update_tag(tag, @update_attrs)
       assert tag.name == "some updated name"
-      assert tag.type == "expenses"
+      assert tag.type == "expense"
     end
 
     test "update_tag/2 with invalid data returns error changeset" do

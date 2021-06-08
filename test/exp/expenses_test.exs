@@ -13,7 +13,7 @@ defmodule Exp.ExpensesTest do
     def expense_fixture(attrs \\ %{}) do
       user = Exp.AccountsFixtures.user_fixture()
 
-      {:ok, tag} = Exp.Tags.create_tag(user, %{name: "Dinner", type: "expenses"})
+      {:ok, tag} = Exp.Tags.create_tag(user, %{name: "Dinner", type: "expense"})
 
       attrs = Enum.into(attrs, @valid_attrs)
 
@@ -34,7 +34,7 @@ defmodule Exp.ExpensesTest do
 
     test "create_expense/1 with valid data creates a expense" do
       user = Exp.AccountsFixtures.user_fixture()
-      {:ok, tag} = Exp.Tags.create_tag(user, %{name: "Dinner", type: "expenses"})
+      {:ok, tag} = Exp.Tags.create_tag(user, %{name: "Dinner", type: "expense"})
 
       assert {:ok, %Expense{} = expense} =
                Expenses.create_expense(user, Map.put(@valid_attrs, :tag_id, tag.id))

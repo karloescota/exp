@@ -11,7 +11,7 @@ defmodule Exp.Tags.Tag do
     timestamps()
   end
 
-  @valid_types ["income", "expenses"]
+  @valid_types ["income", "expense"]
 
   @doc false
   def changeset(tag, attrs) do
