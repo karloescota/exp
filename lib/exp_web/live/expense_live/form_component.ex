@@ -1,12 +1,12 @@
 defmodule ExpWeb.ExpenseLive.FormComponent do
   use ExpWeb, :live_component
 
-  alias Exp.Expenses
+  alias Exp.Transactions
   alias Exp.Tags
 
   @impl true
   def update(%{expense: expense, current_user: current_user} = assigns, socket) do
-    changeset = Expenses.change_expense(expense)
+    changeset = Transactions.change_expense(expense)
     tags = Tags.list_expenses_tags(current_user)
 
     {:ok,
@@ -20,7 +20,7 @@ defmodule ExpWeb.ExpenseLive.FormComponent do
   def handle_event("validate", %{"expense" => expense_params}, socket) do
     changeset =
       socket.assigns.expense
-      |> Expenses.change_expense(expense_params)
+      |> Transactions.change_expense(expense_params)
       |> Map.put(:action, :validate)
 
     {:noreply, assign(socket, :changeset, changeset)}
@@ -31,7 +31,7 @@ defmodule ExpWeb.ExpenseLive.FormComponent do
   end
 
   defp save_expense(socket, :edit, expense_params) do
-    case Expenses.update_expense(socket.assigns.expense, expense_params) do
+    case Transactions.update_expense(socket.assigns.expense, expense_params) do
       {:ok, _expense} ->
         {:noreply,
          socket
@@ -44,7 +44,7 @@ defmodule ExpWeb.ExpenseLive.FormComponent do
   end
 
   defp save_expense(socket, :new, expense_params) do
-    case Expenses.create_expense(socket.assigns.current_user, expense_params) do
+    case Transactions.create_expense(socket.assigns.current_user, expense_params) do
       {:ok, _expense} ->
         {:noreply,
          socket
