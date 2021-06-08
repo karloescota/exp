@@ -67,7 +67,7 @@ defmodule ExpWeb.Router do
     get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
 
     live "/dashboard", DashboardLive
-    live "/expenses/:year/:month", ExpensesLive.Index, :index
+    live "/expenses/:year/:month", ExpenseLive, :index
   end
 
   scope "/", ExpWeb do

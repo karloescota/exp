@@ -1,4 +1,4 @@
-defmodule ExpWeb.ExpensesLive.Index do
+defmodule ExpWeb.ExpenseLive do
   use ExpWeb, :live_view
 
   @impl true

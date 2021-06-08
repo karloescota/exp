@@ -9,7 +9,7 @@
     <div class="totals-item">
       <span class="amount">P 58,000</span>
     </div>
-    <%= live_redirect "P 26,000", to: Routes.expenses_index_path(@socket, :index, @year, @month), class: "totals-item" %>
+    <%= live_redirect "P 26,000", to: Routes.expense_path(@socket, :index, @year, @month), class: "totals-item" %>
   </div>
 
   <h3>Transactions</h3>
