@@ -5,12 +5,6 @@ defmodule Exp.Transactions do
   alias Exp.Transactions.Transaction
   alias Exp.Accounts.User
 
-  def create_expense(%User{} = user, attrs \\ %{}) do
-    %Transaction{user_id: user.id}
-    |> Transaction.changeset(attrs)
-    |> Repo.insert()
-  end
-
   def list_expenses(user, from, to, preloads \\ []) do
     query =
       from transaction in Transaction,
@@ -25,23 +19,6 @@ defmodule Exp.Transactions do
     Repo.all(query) |> Repo.preload(preloads)
   end
 
-  def update_expense(expense, attrs) do
-    expense
-    |> Transaction.changeset(attrs)
-    |> Repo.update()
-  end
-
-  def change_expense(%Transaction{} = expense, attrs \\ %{}) do
-    Transaction.changeset(expense, attrs)
-  end
-
-  ## Income
-  def create_transaction(%User{} = user, attrs \\ %{}) do
-    %Transaction{user_id: user.id}
-    |> Transaction.changeset(attrs)
-    |> Repo.insert()
-  end
-
   def list_incomes(user, from, to, preloads \\ []) do
     query =
       from transaction in Transaction,
@@ -54,6 +31,12 @@ defmodule Exp.Transactions do
         order_by: [desc: :date]
 
     Repo.all(query) |> Repo.preload(preloads)
+  end
+
+  def create_transaction(%User{} = user, attrs \\ %{}) do
+    %Transaction{user_id: user.id}
+    |> Transaction.changeset(attrs)
+    |> Repo.insert()
   end
 
   def update_transaction(transaction, attrs) do
