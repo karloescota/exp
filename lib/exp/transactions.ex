@@ -5,6 +5,18 @@ defmodule Exp.Transactions do
   alias Exp.Transactions.Transaction
   alias Exp.Accounts.User
 
+  def list_transactions(user, from, to, preloads \\ []) do
+    query =
+      from transaction in Transaction,
+        where:
+          transaction.date >= ^from and
+            transaction.date <= ^to and
+            transaction.user_id == ^user.id,
+        order_by: [desc: :date]
+
+    Repo.all(query) |> Repo.preload(preloads)
+  end
+
   def list_expenses(user, from, to, preloads \\ []) do
     query =
       from transaction in Transaction,

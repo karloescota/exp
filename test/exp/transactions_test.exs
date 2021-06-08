@@ -103,6 +103,9 @@ defmodule Exp.TransactionsTest do
              second_income,
              first_income
            ]
+
+    transactions = Transactions.list_transactions(user, ~D[2021-06-01], ~D[2021-06-30])
+    assert Enum.count(transactions) == 4
   end
 
   test "update transaction" do
