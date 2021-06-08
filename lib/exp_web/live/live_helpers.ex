@@ -14,9 +14,4 @@ defmodule ExpWeb.LiveHelpers do
       user_token && Exp.Accounts.get_user_by_session_token(user_token)
     end)
   end
-
-  def currency_format(amount) when is_integer(amount) do
-    currency = :erlang.float_to_binary(amount / 100, decimals: 2)
-    "P #{currency}"
-  end
 end

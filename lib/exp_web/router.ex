@@ -68,6 +68,7 @@ defmodule ExpWeb.Router do
 
     live "/dashboard", DashboardLive
     live "/expenses/:year/:month", ExpenseLive, :index
+    live "/expenses/new", ExpenseLive, :new
   end
 
   scope "/", ExpWeb do
