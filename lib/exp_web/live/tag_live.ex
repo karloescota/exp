@@ -21,7 +21,7 @@ defmodule ExpWeb.TagLive do
 
   defp apply_action(socket, :index, _params) do
     socket
-    |> assign(:page_title, nil)
+    |> assign(:page_title, "Tags")
     |> assign(:tag, nil)
   end
 

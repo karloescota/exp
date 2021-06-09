@@ -1,4 +1,6 @@
 <div class="tags-page">
+  <div class="page-title"><%= @page_title %></div>
+
   <span><%= live_patch "New Tag", to: Routes.tag_path(@socket, :new), class: "button" %></span>
 
   <%= if @live_action in [:new] do %>
