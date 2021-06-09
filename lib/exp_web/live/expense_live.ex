@@ -9,9 +9,7 @@ defmodule ExpWeb.ExpenseLive do
     socket = assign_defaults(socket, session)
     current_user = socket.assigns.current_user
 
-    year = String.to_integer(year)
-    month = String.to_integer(month)
-    {:ok, date} = Date.new(year, month, 1)
+    date = Date.new!(String.to_integer(year), String.to_integer(month), 1)
     from = Date.beginning_of_month(date)
     to = Date.end_of_month(date)
 
@@ -20,8 +18,6 @@ defmodule ExpWeb.ExpenseLive do
 
     {:ok,
      socket
-     |> assign(:month, month)
-     |> assign(:year, year)
      |> assign(:date, date)
      |> assign(:expenses, expenses)
      |> assign(:total, total)}

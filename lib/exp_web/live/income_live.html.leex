@@ -12,7 +12,7 @@
       action: @live_action,
       income: @income,
       current_user: @current_user,
-      return_to: Routes.income_path(@socket, :index, @year, @month) %>
+      return_to: Routes.income_path(@socket, :index, @date.year, @date.month) %>
   <% end %>
 
   <ul class="incomes">

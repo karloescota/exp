@@ -12,7 +12,7 @@
       action: @live_action,
       expense: @expense,
       current_user: @current_user,
-      return_to: Routes.expense_path(@socket, :index, @year, @month) %>
+      return_to: Routes.expense_path(@socket, :index, @date.year, @date.month) %>
   <% end %>
 
   <ul class="expenses">
