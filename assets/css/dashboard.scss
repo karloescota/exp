@@ -18,6 +18,16 @@
     margin-top: 1rem;
     margin-bottom: 1rem;
     border: 1px solid rgba($color: #b8b8b8, $alpha: 0.5);
+
+    > .name {
+      display: block;
+      font-size: 0.6em;
+      color: rgba($color: #616161, $alpha: 1)
+    }
+
+    > .amount {
+      font-size: 1.5em;
+    }
   }
 
   > .totals {
@@ -30,6 +40,12 @@
       text-align: center;
       padding: 2rem;
       border: 1px solid rgba($color: #b8b8b8, $alpha: 0.5);
+
+      > .name {
+        display: block;
+        font-size: 0.6em;
+        color: rgba($color: #616161, $alpha: 1)
+      }
     }
   }
 

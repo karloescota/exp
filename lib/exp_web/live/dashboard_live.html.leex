@@ -4,10 +4,22 @@
     <%= Calendar.strftime(@date, "%b %Y") %>
     <%= live_patch ">", to: Routes.dashboard_path(@socket, :index, %{year: @next_date.year, month: @next_date.month}), class: "right" %>
   </div>
-  <div class="balance"><%= @balance %></div>
+
+  <div class="balance">
+    <span class="name">Balance</span>
+    <span class="amount"><%= @balance %></span>
+  </div>
+
   <div class="totals">
-    <%= live_redirect @income_total, to: Routes.income_path(@socket, :index, @date.year, @date.month), class: "totals-item" %>
-    <%= live_redirect @expense_total, to: Routes.expense_path(@socket, :index, @date.year, @date.month), class: "totals-item" %>
+    <%= live_redirect to: Routes.income_path(@socket, :index, @date.year, @date.month), class: "totals-item" do %>
+      <span class="name">Incomes</span>
+      <span class="amount"><%= @income_total %></span>
+    <% end %>
+
+    <%= live_redirect to: Routes.expense_path(@socket, :index, @date.year, @date.month), class: "totals-item" do %>
+      <span class="name">Expenses</span>
+      <span class="amount"><%= @expense_total %></span>
+    <% end %>
   </div>
 
   <div class="recent-transactions">
