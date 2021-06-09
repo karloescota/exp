@@ -1,6 +1,4 @@
 <div class="dashboard-page">
-  <div class="page-title"><%= @page_title %></div>
-
   <div class="date">
     <%= live_patch "<", to: Routes.dashboard_path(@socket, :index, %{year: @previous_date.year, month: @previous_date.month}), class: "left" %>
     <%= Calendar.strftime(@date, "%b %Y") %>

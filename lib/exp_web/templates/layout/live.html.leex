@@ -1,11 +1,31 @@
-<main role="main" class="container">
-  <p class="alert alert-info" role="alert"
-    phx-click="lv:clear-flash"
-    phx-value-key="info"><%= live_flash(@flash, :info) %></p>
+<div class="live-container">
+  <header class="header container">
+    <%= if @current_user do %>
+      <%= link "Log out", to: Routes.user_session_path(@socket, :delete), method: :delete, class: "link" %>
+    <% else %>
+      <%= link "Register", to: Routes.user_registration_path(@socket, :new), class: "link" %>
+      <%= link "Log in", to: Routes.user_session_path(@socket, :new), class: "link" %>
+    <% end %>
+    <div class="page-title"><%= @page_title %></div>
+  </header>
 
-  <p class="alert alert-danger" role="alert"
-    phx-click="lv:clear-flash"
-    phx-value-key="error"><%= live_flash(@flash, :error) %></p>
+  <main role="main" class="main container">
+    <p class="alert alert-info" role="alert"
+      phx-click="lv:clear-flash"
+      phx-value-key="info"><%= live_flash(@flash, :info) %></p>
 
-  <%= @inner_content %>
-</main>
+    <p class="alert alert-danger" role="alert"
+      phx-click="lv:clear-flash"
+      phx-value-key="error"><%= live_flash(@flash, :error) %></p>
+
+    <%= @inner_content %>
+  </main>
+
+  <%= if @current_user do %>
+    <div class="footer-nav">
+      <%= link "Dashboard", to: Routes.dashboard_path(@socket, :index), class: "nav-item" %>
+      <%= link "Tags", to: Routes.tag_path(@socket, :index), class: "nav-item" %>
+      <%= link "Incomes", to: Routes.income_path(@socket, :index, Date.utc_today.year, Date.utc_today.month), class: "nav-item" %>
+    </div>
+  <% end %>
+</div>

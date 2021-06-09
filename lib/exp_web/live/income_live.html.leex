@@ -1,6 +1,4 @@
 <div class="incomes-page">
-  <div class="page-title"><%= @page_title %></div>
-
   <div class="month"><%= Calendar.strftime(@date, "%b %Y") %></div>
   <h3 class="total"><%= @total %></h3>
   <span><%= live_patch "New Income", to: Routes.income_path(@socket, :new), class: "button" %></span>
