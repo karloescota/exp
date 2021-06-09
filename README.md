@@ -2,9 +2,17 @@
 
 A barebones Exp-enses tracker. This web app allows you to record your expenses and income and helps you budget your finances.
 
-We were personally using a free expenses tracker app on mobile and I decided to build this as a challenge. This is still a work in a progress but already useable. Just sprinkle more elixir into it. ;)
+We were personally using a free expenses tracker app on mobile and I decided to build this as a challenge. It only caters to mobile for now. This is still a work in a progress but already useable. Just sprinkle more elixir into it. ;)
 
 Built using Elixir and Phoenix and running LiveView!
+
+Dashboard page
+
+![Dashboard](https://user-images.githubusercontent.com/7534948/121356330-529e8d80-c963-11eb-890a-b725b53b6101.png?raw=true)
+
+Expenses page
+
+![Expenses](https://user-images.githubusercontent.com/7534948/121356501-7cf04b00-c963-11eb-8e78-bb81bc120830.png?raw=true)
 
 ## Development
 
