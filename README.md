@@ -1,8 +1,8 @@
 # Exp
 
-A barebones Exp-enses tracker. This web app that allows you to record your expenses and income and helps you budget your finances.
+A barebones Exp-enses tracker. This web app allows you to record your expenses and income and helps you budget your finances.
 
-We were using a free expenses tracker app on mobile and I decided to build this as a challenge. This is still a work in a progress but already useable. Just sprinkle more elixir into it ;)
+We were personally using a free expenses tracker app on mobile and I decided to build this as a challenge. This is still a work in a progress but already useable. Just sprinkle more elixir into it. ;)
 
 Built using Elixir and Phoenix and running LiveView!
 
