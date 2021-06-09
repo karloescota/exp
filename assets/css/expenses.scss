@@ -7,6 +7,10 @@
     text-align: center;
   }
 
+  > .new-button {
+    width: 100%;
+  }
+
   > .expenses {
     > .expense {
       display: flex;

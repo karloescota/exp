@@ -1,7 +1,7 @@
 <div class="expenses-page">
   <div class="month"><%= Calendar.strftime(@date, "%b %Y") %></div>
   <h3 class="total"><%= @total %></h3>
-  <span><%= live_patch "New Expense", to: Routes.expense_path(@socket, :new), class: "button" %></span>
+  <%= live_patch "New Expense", to: Routes.expense_path(@socket, :new), class: "button new-button" %>
 
   <%= if @live_action in [:new] do %>
     <%= live_modal ExpWeb.ExpenseLive.FormComponent,
