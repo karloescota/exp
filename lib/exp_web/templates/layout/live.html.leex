@@ -26,7 +26,7 @@
       <%= link "Dashboard", to: Routes.dashboard_path(@socket, :index), class: "nav-item" %>
       <%= link "Tags", to: Routes.tag_path(@socket, :index), class: "nav-item" %>
       <%= link "Incomes", to: Routes.income_path(@socket, :index, Date.utc_today.year, Date.utc_today.month), class: "nav-item" %>
-      <%= link "Expenses", to: Routes.income_path(@socket, :index, Date.utc_today.year, Date.utc_today.month), class: "nav-item" %>
+      <%= link "Expenses", to: Routes.expense_path(@socket, :index, Date.utc_today.year, Date.utc_today.month), class: "nav-item" %>
     </div>
   <% end %>
 </div>
