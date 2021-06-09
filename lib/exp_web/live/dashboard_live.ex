@@ -29,6 +29,7 @@ defmodule ExpWeb.DashboardLive do
     %{income_total: income_total, expense_total: expense_total} = calculate_totals(transactions)
 
     socket
+    |> assign(:page_title, "Dashboard")
     |> assign(:date, date)
     |> assign(:previous_date, Date.add(date, -30))
     |> assign(:next_date, Date.add(date, 30))

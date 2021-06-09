@@ -10,7 +10,13 @@
     <script defer phx-track-static type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </head>
   <body class="body">
-    <header class="header">
+    <header class="header container">
+      <%= if @current_user do %>
+        <%= link "Log out", to: Routes.user_session_path(@conn, :delete), method: :delete, class: "link" %>
+      <% else %>
+        <%= link "Register", to: Routes.user_registration_path(@conn, :new), class: "link" %>
+        <%= link "Log in", to: Routes.user_session_path(@conn, :new), class: "link" %>
+      <% end %>
     </header>
     <div class="main">
       <%= @inner_content %>

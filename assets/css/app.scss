@@ -29,6 +29,26 @@ body {
   overflow: scroll;
 }
 
+.page-title {
+  text-align: center;
+  font-size: 1.2em;
+  width: 70%;
+  margin: 3rem auto 2rem;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  > .link {
+    text-align: right;
+    padding-top: 2rem;
+    font-size: 0.8em;
+  }
+}
+
 .footer-nav {
   display: flex;
   background-color: #8f7fff;

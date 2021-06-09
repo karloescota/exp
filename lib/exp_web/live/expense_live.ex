@@ -34,7 +34,7 @@ defmodule ExpWeb.ExpenseLive do
 
   defp apply_action(socket, :index, _params) do
     socket
-    |> assign(:page_title, nil)
+    |> assign(:page_title, "Expenses")
     |> assign(:expense, nil)
   end
 

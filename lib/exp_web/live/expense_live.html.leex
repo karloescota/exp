@@ -1,4 +1,6 @@
 <div class="expenses-page">
+  <div class="page-title"><%= @page_title %></div>
+
   <div class="month"><%= Calendar.strftime(@date, "%b %Y") %></div>
   <h3 class="total"><%= @total %></h3>
   <span><%= live_patch "New Expense", to: Routes.expense_path(@socket, :new), class: "button" %></span>
