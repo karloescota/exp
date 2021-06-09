@@ -1,8 +1,21 @@
 .dashboard-page {
+  > .date {
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba($color: #c89deb, $alpha: 0.7);
+
+    > .left, > .right {
+      padding: 1rem 2rem;
+    }
+  }
+
   > .balance {
     text-align: center;
     padding-top: 2rem;
     padding-bottom: 2rem;
+    margin-top: 1rem;
     margin-bottom: 1rem;
     border: 1px solid rgba($color: #b8b8b8, $alpha: 0.5);
   }
